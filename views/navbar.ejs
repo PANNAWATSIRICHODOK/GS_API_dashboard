@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="/navbarstyle.css" />
+  </head>
+  <body>
+    <header class="app-header">
+      <nav class="navbar">
+        <a
+          class="navbar__brand"
+          href="javascript:void(0);"
+          onclick="scrollToTopAndRefresh();"
+        >
+          <img
+            src="https://raaspal.com/wp-content/uploads/2023/09/logo-raaspal-w3.png"
+            alt="Logo image"
+            class="navbar__logo"
+          />
+        </a>
+
+        <input
+          type="checkbox"
+          id="navbar__sm-menu-toggle"
+          class="navbar__sm-menu-toggle"
+        />
+        <label for="navbar__sm-menu-toggle" class="navbar__sm-menu-label">
+          <span></span>
+          <span></span>
+          <span></span>
+        </label>
+        <label
+          for="navbar__sm-menu-toggle"
+          class="navbar__sm-menu-overlay"
+        ></label>
+        <ul class="navbar__nav navbar__nav--sm">
+          <li class="navbar__nav-item">
+            <a
+              href="https://raaspal.com/about-us/"
+              target="_blank"
+              class="navbar__nav-link"
+              >About</a
+            >
+          </li>
+          <li class="navbar__nav-item">
+            <a
+              href="https://raaspal.com/services-solutions/"
+              target="_blank"
+              class="navbar__nav-link"
+              >Services</a
+            >
+          </li>
+          <li class="navbar__nav-item">
+            <a
+              href="https://raaspal.com/contact-us/"
+              target="_blank"
+              class="navbar__nav-link"
+              >Contact</a
+            >
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <script>
+      function scrollToTopAndRefresh() {
+        window.scrollTo({ top: 0, behavior: "smooth" }); // เลื่อนไปตำแหน่งบนสุดแบบ Smooth
+        setTimeout(() => {
+          window.location.reload(); // รีเฟรชหน้าหลังเลื่อน
+        }, 1200); // รอการเลื่อนเสร็จสิ้น (ปรับค่าเวลาได้ตามต้องการ)
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Robot Dashboard</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.css"
+    />
+    <link rel="stylesheet" href="/dashboardstyle.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.js"></script>
+  </head>
+
+  <body>
+    <div class="contain">
+      <div class="robot-list">
+        <div class="searchbox">
+          <h2>Available Robots</h2>
+          <input
+            type="text"
+            id="robot-search"
+            placeholder="Search robots by Name or SN."
+            class="search-bar"
+          />
+        </div>
+
+        <div id="robots-container">
+          <div class="loading">Loading robots...</div>
+        </div>
+      </div>
+
+      <div class="details-panel">
+        <h2>Robot Details</h2>
+        <div id="robot-details">
+          <p>Select a robot to view details</p>
+        </div>
+        <div id="map"></div>
+        <div id="device-details" class="stats-grid"></div>
+
+        <div class="edit-location">
+          <h3>Edit Robot Location</h3>
+          <form id="edit-location-form">
+            <div class="form-group">
+              <label for="latitude">Latitude:</label>
+              <input type="number" id="latitude" step="0.000001" required />
+            </div>
+            <div class="form-group">
+              <label for="longitude">Longitude:</label>
+              <input type="number" id="longitude" step="0.000001" required />
+            </div>
+            <button type="submit">Update Location</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <script src="/index.js"></script>
+  </body>
+</html>

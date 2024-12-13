@@ -1,0 +1,324 @@
+:root {
+  /* Color Variables - White Navy Theme */
+  --navy-dark: #1e3a5f;
+  --navy-medium: #ffffff;
+  --navy-light: #f5f8ff;
+  --accent-blue: #2b50aa;
+  --text-light: #1e3a5f;
+  --text-dark: #1e3a5f;
+  --text-muted: #566b8c;
+  --success: #28a745;
+  --error: #dc3545;
+
+  /* Spacing Variables */
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 1rem;
+  --spacing-md: 1.5rem;
+  --spacing-lg: 2rem;
+  --border-radius: 12px;
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 6px 12px rgba(0, 0, 0, 0.12);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, sans-serif;
+  background-color: #f0f4f8;
+  color: var(--text-dark);
+  line-height: 1.6;
+  font-size: 16px;
+  letter-spacing: 0.3px;
+}
+
+.contain {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: var(--spacing-lg);
+  padding: 35px 0;
+  max-width: 1600px;
+  margin: 70px auto;
+  height: auto; /* หรือไม่ระบุความสูงเลย */
+}
+
+.search-bar {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+#robots-container {
+  margin-top: var(--spacing-md); /* เพิ่มระยะห่างจาก searchbox */
+  padding: var(--spacing-md);
+  background: var(--navy-light);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-sm);
+  overflow-y: auto;
+  /* max-height: calc(100vh - 150px); */
+}
+
+.robot-list {
+  background: var(--navy-medium);
+  padding: var(--spacing-lg);
+  border-radius: var(--border-radius);
+  height: calc(200vh - var(--spacing-lg) * 2);
+  overflow-y: auto;
+  box-shadow: var(--shadow-md);
+}
+
+.robot-item {
+  padding: var(--spacing-md);
+  margin: var(--spacing-sm) 0;
+  background: var(--navy-light);
+  border-radius: calc(var(--border-radius) - 4px);
+  cursor: pointer;
+  box-shadow: var(--shadow-sm);
+  transition: all 0.3s ease;
+  color: var(--text-dark);
+}
+
+.robot-item:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+  background: var(--accent-blue);
+  color: white;
+}
+
+.robot-item.selected {
+  background: var(--accent-blue);
+  color: white;
+  border-left: 4px solid var(--navy-dark);
+  padding-left: calc(var(--spacing-md) - 4px);
+}
+
+.details-panel {
+  background: var(--navy-medium);
+  padding: var(--spacing-lg);
+  border-radius: var(--border-radius);
+  height: auto; /* ใช้ความสูงตามเนื้อหา */
+  overflow-y: visible; /* เปิดให้เนื้อหาขยายได้อิสระ */
+  box-shadow: var(--shadow-md);
+}
+
+#map {
+  height: 400px;
+  margin: var(--spacing-lg) 0;
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-md);
+}
+
+/* Find and replace the existing .edit-location styles with: */
+.edit-location {
+  background: var(--navy-light);
+  padding: var(--spacing-md);
+  border-radius: calc(var(--border-radius) - 4px);
+  margin-bottom: var(--spacing-md);
+  border: 1px solid #e1e8f0;
+  margin-top: 25px;
+}
+
+.edit-location h3 {
+  color: var(--text-muted);
+  font-size: 1.2rem;
+  margin-bottom: var(--spacing-md);
+}
+
+.edit-location form {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--spacing-sm);
+  align-items: end;
+}
+
+/* Update button styles within edit-location */
+.edit-location button {
+  background: var(--navy-medium);
+  color: var(--text-dark);
+  border: 1px solid #e1e8f0;
+  padding: var(--spacing-sm) var(--spacing-md);
+  font-weight: normal;
+}
+
+.edit-location button:hover {
+  background: var(--navy-light);
+  color: var(--accent-blue);
+  border-color: var(--accent-blue);
+  transform: none;
+  box-shadow: var(--shadow-sm);
+}
+
+/* Make form inputs less prominent */
+.edit-location input {
+  background: var(--navy-medium);
+  border: 1px solid #e1e8f0;
+  padding: calc(var(--spacing-sm) - 2px);
+  font-size: 0.95rem;
+}
+
+.edit-location .form-group label {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  font-weight: normal;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+}
+
+.form-group label {
+  font-weight: 500;
+  color: var(--text-dark);
+  margin-bottom: var(--spacing-xs);
+}
+
+input {
+  background: white;
+  border: 2px solid #e1e8f0;
+  color: var(--text-dark);
+  padding: var(--spacing-sm);
+  border-radius: calc(var(--border-radius) - 6px);
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+input:focus {
+  outline: none;
+  border-color: var(--accent-blue);
+  box-shadow: var(--shadow-sm);
+}
+
+button {
+  background: var(--accent-blue);
+  color: white;
+  border: none;
+  padding: var(--spacing-sm) var(--spacing-lg);
+  border-radius: calc(var(--border-radius) - 6px);
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  font-size: 1rem;
+}
+
+button:hover {
+  background: var(--navy-dark);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: var(--spacing-md);
+  margin-top: var(--spacing-lg);
+}
+
+.stat-card {
+  background: var(--navy-light);
+  padding: var(--spacing-lg);
+  border-radius: calc(var(--border-radius) - 4px);
+  box-shadow: var(--shadow-sm);
+  text-align: center;
+}
+
+.stat-card h4 {
+  color: var(--accent-blue);
+  margin-bottom: var(--spacing-sm);
+  font-size: 1.2rem;
+}
+
+h2,
+h3 {
+  color: var(--text-dark);
+  margin-bottom: var(--spacing-lg);
+  font-size: 1.8rem;
+  font-weight: 600;
+}
+
+h3 {
+  font-size: 1.5rem;
+}
+
+.loading {
+  text-align: center;
+  padding: var(--spacing-lg);
+  color: var(--text-muted);
+  font-size: 1.1rem;
+}
+
+.error {
+  color: var(--error);
+  padding: var(--spacing-md);
+  margin: var(--spacing-sm) 0;
+  background: #fff5f5;
+  border-radius: calc(var(--border-radius) - 4px);
+  border-left: 4px solid var(--error);
+}
+
+.status-indicator {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  margin-left: 8px;
+}
+
+.status-online {
+  background: var(--success);
+  box-shadow: 0 0 8px var(--success);
+}
+
+.status-offline {
+  background: var(--error);
+  box-shadow: 0 0 8px var(--error);
+}
+
+@media (max-width: 1024px) {
+  .contain {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-md);
+  }
+
+  .robot-list {
+    height: auto;
+    max-height: 60vh;
+  }
+
+  .details-panel {
+    height: auto;
+  }
+}
+
+@media (max-width: 768px) {
+  :root {
+    --spacing-lg: 1.5rem;
+    --spacing-md: 1rem;
+    --spacing-sm: 0.75rem;
+  }
+
+  .contain {
+    padding: var(--spacing-sm);
+  }
+
+  .edit-location form {
+    grid-template-columns: 1fr;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+  }
+
+  h3 {
+    font-size: 1.3rem;
+  }
+}
